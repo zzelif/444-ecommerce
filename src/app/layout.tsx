@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Roboto_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/header";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
@@ -28,12 +27,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scrollbar-thumb-slate-700 scrollbar-track-slate-300 scrollbar-thin no-touch"
+      className="scrollbar-thumb-slate-700 scrollbar-track-slate-300 scrollbar-thin no-touch touch"
     >
       <body
         className={`${poppinsSans.variable} ${robotoMono.variable} antialiased`}
       >
-        <Header />
         {children}
       </body>
     </html>
