@@ -8,7 +8,7 @@ import Gallery from '@/components/gallery/gallery'
 import Info from '@/components/info'
 
 interface ProductPageProps {
-  params: { slug: string, }
+  params: Promise<{ slug: string, }>
   searchParams: Promise<{productId: string}>
 }
 
