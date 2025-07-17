@@ -6,15 +6,15 @@ import Image from 'next/image'
 import { formatPrice } from '@/lib/utils'
 
 interface ProductPageProps {
-  searchParams: { productId?: string }
+  params: Promise<{ id: string }>
 }
 
-export default async function ProductPage({ searchParams }: ProductPageProps) {
-  const productId = searchParams.productId
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params
 
-  if (!productId) return notFound()
+  if (!id) return notFound()
 
-  const product = await getProductById(productId)
+  const product = await getProductById(id)
 
   if (!product) return notFound()
 
