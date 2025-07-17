@@ -20,12 +20,12 @@ const Product = () => {
             Explore all products we offer to meet your needs
           </h3>
         </div>
-        <a
+        <Link
           href='/products'
           className='hidden md:flex gap-1 text-emerald-700 hover:translate-x-1 hover:text-emerald-600 transition-all'
         >
           Shop the collection <ArrowRight />
-        </a>
+        </Link>
       </div>
       <Suspense fallback={<PopularProductsSkeleton />}>
         <PopularProducts />

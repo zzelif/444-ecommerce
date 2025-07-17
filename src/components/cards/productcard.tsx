@@ -1,13 +1,15 @@
+//src\components\cards\productcard.tsx
+
 'use client'
 
 import { Product } from '@/generated/prisma'
-import { ShoppingCart } from 'lucide-react'
+// import { ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 // import { MouseEventHandler } from 'react'
 
-import { Button } from '@/components/ui/button'
-import { formatPrice, slugify } from '@/lib/utils'
+// import { Button } from '@/components/ui/button'
+import { formatPrice, slugify, titleCase } from '@/lib/utils'
 // import useCart from '@/hooks/useCart'
 
 interface ProductCardProps {
@@ -25,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const productUrl = `/products/${slugify(product.name)}?productId=${product.id}`
 
   return (
-    <div className='group/card h-full space-y-4 rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-xl'>
+    <div className='group/card h-full space-y-4 rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-2xl'>
       <Link href={productUrl}>
         <div className='relative aspect-square m-3 overflow-hidden rounded-2xl bg-gray-100'>
           <Image
@@ -33,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             alt={product.imageUrl}
             fill
             sizes='200px'
-            className='object-cover rounded-2xl transition-transform duration-300 group-hover/card:scale-105'
+            className='object-cover rounded-2xl'
           />
         </div>
 
@@ -44,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               className='truncate text-lg font-semibold group-hover/card:text-emerald-800'
               title={product.name}
             >
-              {product.name}
+              {titleCase(product.name)}
             </p>
             
           </div>
@@ -55,7 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </div>
 
             <div className='group/icon'>
-              <Button
+              {/* <Button
                 aria-label='Add to cart'
                 className='bg-emerald-50 group-hover/icon:bg-emerald-500'
                 // onClick={onAddToCart}
@@ -64,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     size={20}
                     className='text-emerald-600 group-hover/icon:text-white'
                   />
-              </Button>
+              </Button> */}
               
             </div>
           </div>

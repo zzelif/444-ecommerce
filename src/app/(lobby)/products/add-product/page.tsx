@@ -54,7 +54,7 @@ async function addProduct(formData: FormData) {
     data: { name, description, imageUrl, price, type },
   });
 
-  redirect("/add-product?success=true");
+  redirect("/products/add-product?success=true");
 }
 
 export default function AddProductPage() {
