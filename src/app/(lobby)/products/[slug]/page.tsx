@@ -1,25 +1,44 @@
 // src/app/(lobby)/products/[slug]/page.tsx
 
+import { prisma } from '@/lib/prisma'
+import { Metadata } from 'next'
+import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { getProductById } from '@/lib/data'
 import Gallery from '@/components/gallery/gallery'
 import Info from '@/components/info'
 
 interface ProductPageProps {
-  params: Promise<{ slug: string }>
-  searchParams?: Promise<{ productId?: string }>
+  params: { slug: string, }
+  searchParams: Promise<{productId: string}>
 }
 
-export default async function ProductPage({
-  searchParams,
-}: ProductPageProps) {
-  const {productId} = await searchParams || {}
+const getProduct = cache(async (id: string) => {
+  const product = await prisma.product.findUnique({where: {id}})
+  if (!product) notFound()
+    return product
+})
 
+export async function generateMetadata({searchParams}: ProductPageProps): Promise<Metadata> {
+  const { productId } = await searchParams
+  if (!productId) notFound()
+
+  const product = await getProduct(productId);
+
+  return {
+    title: product.name + " - 444 Custom Print Hub",
+    description: product.description,
+    openGraph: {
+      images: [{url: product.imageUrl}]
+    },
+
+  }
+}
+
+export default async function ProductPage({ searchParams }: ProductPageProps) {
+  const { productId } = await searchParams
   if (!productId) return notFound()
 
-  const product = await getProductById(productId)
-
-  if (!product) return notFound()
+  const product = await getProduct(productId)
 
     const images = [
   {
