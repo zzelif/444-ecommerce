@@ -33,6 +33,14 @@ const config: runtime.GetPrismaClientConfig = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-musl"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -55,8 +63,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "//prisma\\schema.prisma\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum ProductType {\n  candle\n  magnet\n}\n\nmodel Product {\n  id          String      @id @default(auto()) @map(\"_id\") @db.ObjectId\n  description String\n  imageUrl    String\n  name        String\n  price       Int\n  type        ProductType\n  createdAt   DateTime    @default(now())\n  updatedAt   DateTime    @updatedAt\n\n  @@map(\"products\")\n}\n",
-  "inlineSchemaHash": "0657a4ecb6a3f9ce9d12c109cc7ae4de51fb8586806ff0d92e030c68f64eabd8",
+  "inlineSchema": "//prisma\\schema.prisma\n\ngenerator client {\n  provider      = \"prisma-client\"\n  binaryTargets = [\"native\", \"linux-musl\", \"rhel-openssl-3.0.x\"]\n  output        = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum ProductType {\n  candle\n  magnet\n}\n\nmodel Product {\n  id          String      @id @default(auto()) @map(\"_id\") @db.ObjectId\n  description String\n  imageUrl    String\n  name        String\n  price       Int\n  type        ProductType\n  createdAt   DateTime    @default(now())\n  updatedAt   DateTime    @updatedAt\n\n  @@map(\"products\")\n}\n",
+  "inlineSchemaHash": "d1c09c4eb477621a61b12c242ad08627e2818a8ea02753930892cf70ef562744",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},
