@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link"
 import { ArrowRight } from "lucide-react";
 import { categories } from "@/lib/categories";
 import CategoryCard from "@/components/cards/categorycard";
@@ -18,12 +19,12 @@ const Categories = () => {
                     needs
                 </h3>
             </div>
-            <a
+            <Link
             href="/products"
             className="hidden gap-1 text-emerald-700 transition-all hover:translate-x-1 hover:text-emerald-600 md:flex"
             >
             Browse the collection <ArrowRight />
-            </a>
+            </Link>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => (

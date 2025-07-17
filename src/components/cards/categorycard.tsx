@@ -1,4 +1,4 @@
-import { ProductType } from "@/generated/prisma";
+import { ProductType } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import {
   Card,

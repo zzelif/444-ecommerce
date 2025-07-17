@@ -9,7 +9,7 @@ const config = {
   tabWidth: 4,
   semi: false,
   singleQuote: true,
-  plugins: "tailwindcss",
+  plugins: "prettier-plugin-tailwindcss",
 };
 
 export default config;

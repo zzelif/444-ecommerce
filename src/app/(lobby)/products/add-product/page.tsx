@@ -1,8 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import { Label } from "@/components/ui/label";
+import { Suspense } from "react";
 import { SuccessBanner } from "@/components/success";
+import { SuccessBannerFallback } from "@/components/skeletons/successbannerskeleton";
 import { redirect } from "next/navigation";
-import { ProductType } from "@/generated/prisma";
+import { ProductType } from "@/generated/prisma/client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -62,7 +64,9 @@ export default function AddProductPage() {
     <main className="fantasy">
       <div className="flex w-full flex-col items-center justify-center gap-6">
         <h1 className="mb-3 text-lg font-semibold">Add Product</h1>
-        <SuccessBanner />
+        <Suspense fallback={<SuccessBannerFallback />}>
+          <SuccessBanner />
+        </Suspense>
         <form
           action={addProduct}
           className="grid w-5/12 gap-4 place-self-center"
