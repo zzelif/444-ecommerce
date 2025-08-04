@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ClientProvider from "@/components/providers/clientprovider";
 import { Poppins, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -36,7 +37,9 @@ export default function RootLayout({
       <body
         className={`${poppinsSans.variable} ${robotoMono.variable} antialiased`}
       >
+        <ClientProvider>
         {children}
+        </ClientProvider>
       </body>
     </html>
   );

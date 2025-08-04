@@ -1,3 +1,5 @@
+// src\components\layout\desktopnav.tsx
+
 "use client";
 
 import Link from "next/link";
@@ -56,10 +58,10 @@ const DesktopNav = () => {
             <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2">
-                <ListItem href="/products?category=candles" title="Candles">
+                <ListItem href="/products?category=candle" title="Candles">
                   Explore the Candles category
                 </ListItem>
-                <ListItem href="/products?category=magnets" title="Magnets">
+                <ListItem href="/products?category=magnet" title="Magnets">
                   Explore the Ref Magnets category
                 </ListItem>
               </ul>

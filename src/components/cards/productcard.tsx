@@ -2,6 +2,8 @@
 
 'use client'
 
+export const dynamic="force-dynamic"
+
 import { Product } from '@/generated/prisma/client'
 // import { ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
