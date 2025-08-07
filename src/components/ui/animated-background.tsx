@@ -1,5 +1,3 @@
-// src\components\ui\animated-background.tsx
-
 'use client'
 import { cn } from '@/lib/utils'
 import { AnimatePresence, Transition, motion } from 'motion/react'
@@ -10,12 +8,22 @@ import {
   useEffect,
   useState,
   useId,
+  HTMLAttributes,
+  MouseEventHandler,
 } from 'react'
+
+// Define the props that child elements should have
+interface ChildProps extends HTMLAttributes<HTMLElement> {
+  'data-id': string
+  'data-checked'?: string
+  className?: string
+  children?: React.ReactNode
+}
 
 export type AnimatedBackgroundProps = {
   children:
-    | ReactElement<{ 'data-id': string }>[]
-    | ReactElement<{ 'data-id': string }>
+    | ReactElement<ChildProps>[]
+    | ReactElement<ChildProps>
   defaultValue?: string
   onValueChange?: (newActiveId: string | null) => void
   className?: string
@@ -48,21 +56,25 @@ export function AnimatedBackground({
     }
   }, [defaultValue])
 
-  return Children.map(children, (child: any, index) => {
+  return Children.map(children, (child: ReactElement<ChildProps>, index) => {
     const id = child.props['data-id']
 
     const interactionProps = enableHover
       ? {
-          onMouseEnter: () => handleSetActiveId(id),
-          onMouseLeave: () => handleSetActiveId(null),
+          onMouseEnter: (() => handleSetActiveId(id)) as MouseEventHandler<HTMLElement>,
+          onMouseLeave: (() => handleSetActiveId(null)) as MouseEventHandler<HTMLElement>,
         }
       : {
-          onClick: () => handleSetActiveId(id),
+          onClick: ((e) => {
+            e.preventDefault()
+            handleSetActiveId(id)
+          }) as MouseEventHandler<HTMLElement>,
         }
 
     return cloneElement(
       child,
       {
+        ...child.props,
         key: index,
         className: cn('relative inline-flex', child.props.className),
         'data-checked': activeId === id ? 'true' : 'false',
