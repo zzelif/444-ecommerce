@@ -5,6 +5,7 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { SocialIcon } from 'react-social-icons'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { TextLoop } from '@/components/ui/text-loop'
 
@@ -42,7 +43,7 @@ function ThemeSwitch() {
 
   return (
     <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
+      className="pointer-events-none rounded-lg bg-accent"
       defaultValue={theme}
       transition={{
         type: 'spring',
@@ -58,7 +59,7 @@ function ThemeSwitch() {
         return (
           <button
             key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+            className="inline-flex h-7 w-7 items-center justify-center text-secondary-foreground transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-secondary-foreground"
             type="button"
             aria-label={`Switch to ${theme.label} theme`}
             data-id={theme.id}
@@ -76,17 +77,20 @@ export function Footer() {
     return (
     <footer className="mt-24 border-t border-border px-0 py-4 dark:border-border">
       <div className="flex items-center justify-between px-6">
-        <a href="" target="_blank" rel="noopener noreferrer">
-          <TextLoop className="text-xs text-primary">
+        <a href="" target="_blank" rel="noopener noreferrer" className='max-w-1/3'>
+          <TextLoop className="text-xs text-primary w-[161px]">
             <span>© 2025 444 Custom Print Hub.</span>
             <span>Built with Motion-Primitives.</span>
           </TextLoop>
         </a>
-        <div className='flex flex-row gap-4 max-w-1/3 justify-center text-center items-center text-xs- text-primary'>
-          <span>Committed to delivering exceptional quality and service to meet all your printing and design needs</span>
-          
+        <div className='flex flex-col gap-4 max-w-1/3 justify-center text-center items-center text-xs- text-primary'>
+          <span>Committed to delivering excellence.</span>
+          <div className='flex flex-row gap-2 justify-center items-center'>
+            <SocialIcon rel="noopener noreferrer" target="_blank" url="https://www.facebook.com/444CustomPrintHub" label='444 Custom Print Hub' style={{ height: 28, width: 28}} bgColor={'var(--accent)'} fgColor={`var(--secondary-foreground)`}/>
+            <SocialIcon rel="noopener noreferrer" target="_blank" url="https://www.tiktok.com/@444.custom.print.hub" label='444 Custom Print Hub' style={{ height: 28, width: 28 }} bgColor={'var(--accent)'} fgColor={`var(--secondary-foreground)`}/>
+          </div>
         </div>
-        <div className="text-xs text-primary">
+        <div className="max-w-1/3 text-xs text-primary">
           <ThemeSwitch />
         </div>
       </div>
