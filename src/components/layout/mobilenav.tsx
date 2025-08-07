@@ -13,7 +13,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -35,8 +35,10 @@ const MobileNav = () => {
               onClick={() => setIsOpen(false)}
             >
               <ChevronsLeftRightEllipsisIcon aria-hidden="true" />
-              <span className="font-bold">444</span>
-              <span className="sr-only">Home</span>
+              <SheetTitle>
+                <span className="font-bold">444</span>
+                <span className="sr-only">Home</span>
+              </SheetTitle>
             </Link>
             <div className="text-sm">
               <Accordion
@@ -70,13 +72,13 @@ const MobileNav = () => {
                     <div className="flex flex-col gap-y-2 text-muted-foreground">
                       <Link
                         onClick={() => setIsOpen(false)}
-                        href="/products?category=candles"
+                        href="/products?category=candle"
                       >
                         Candle Souvenir
                       </Link>
                       <Link
                         onClick={() => setIsOpen(false)}
-                        href="/products?category=magnets"
+                        href="/products?category=magnet"
                       >
                         Magnet Souvenir
                       </Link>

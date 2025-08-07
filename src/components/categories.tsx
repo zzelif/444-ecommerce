@@ -11,7 +11,7 @@ const Categories = () => {
       className="space-y-8 px-4 py-8 sm:px-6 sm:pb-28 md:pt-10 lg:px-8 lg:pt-24">
         <div className="flex items-end justify-between">
             <div className="flex flex-col space-y-4">
-                <h2 className="max-w-sm text-start text-3xl leading-[1.1] font-bold text-emerald-600 md:text-5xl">
+                <h2 className="max-w-sm text-start text-3xl leading-[1.1] font-bold text-primary md:text-5xl">
             Featured Categories
                 </h2>
                 <h3 className="text-muted-foreground leading-normal sm:text-lg sm:leading-7">
@@ -21,7 +21,7 @@ const Categories = () => {
             </div>
             <Link
             href="/products"
-            className="hidden gap-1 text-emerald-700 transition-all hover:translate-x-1 hover:text-emerald-600 md:flex"
+            className="hidden gap-1 text-primary transition-all hover:translate-x-1 hover:text-primary md:flex"
             >
             Browse the collection <ArrowRight />
             </Link>

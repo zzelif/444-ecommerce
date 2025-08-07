@@ -1,18 +1,30 @@
+// app/layout.tsx
+
 import type { Metadata } from "next";
 import ClientProvider from "@/components/providers/clientprovider";
-import { Poppins, Roboto_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Lora, IBM_Plex_Mono } from "next/font/google";
+import { ThemeProvider } from 'next-themes';
 import "./globals.css";
 
-const poppinsSans = Poppins({
-  variable: "--font-poppins-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  variable: "--font-plus-jakarta-sans",
+  display: "swap",
+});
+
+const loraSerif = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-lora-serif",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +33,8 @@ export const metadata: Metadata = {
     default: "444 E-Commerce",
     template: "%s | 444 E-Commerce",
   },
-  description: "Committed to delivering exceptional quality and service to meet all your printing and design needs",
+  description:
+    "Committed to delivering exceptional quality and service to meet all your printing and design needs",
 };
 
 export default function RootLayout({
@@ -30,16 +43,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="scrollbar-thumb-slate-700 scrollbar-track-slate-300 scrollbar-thin no-touch touch"
-    >
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppinsSans.variable} ${robotoMono.variable} antialiased`}
+        className={`${plusJakartaSans.variable} ${loraSerif.variable} ${ibmPlexMono.variable} antialiased`}
       >
-        <ClientProvider>
-        {children}
-        </ClientProvider>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={true}
+          storageKey="theme"
+          defaultTheme="system"
+        >
+          <ClientProvider>
+            {children}
+          </ClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

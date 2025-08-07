@@ -1,4 +1,5 @@
 import Header from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer";
 
 export default async function LobbyLayout({
   children,
@@ -11,6 +12,7 @@ export default async function LobbyLayout({
             <div>
                 {children}
             </div>
+            <Footer />
         </div>
     )
 }

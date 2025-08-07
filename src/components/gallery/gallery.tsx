@@ -1,4 +1,4 @@
-//src\components\gallery\gallery.tsx
+// src\components\gallery\gallery.tsx
 
 "use client";
 
@@ -23,18 +23,18 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             </div>
             <TabPanels className={"aspect-square sm:w-full sm:h-full lg:w-4/5 lg:h-4/5"}>
                 {images.map((image) => (
-          <TabPanel key={image.name}>
-            <div className='aspect-square relative soverflow-hidden w-full'>
-              <Image
-                priority
-                fill
-                src={image.url}
-                alt={image.url}
-                className='object-cover object-center rounded-xl'
-              />
-            </div>
-          </TabPanel>
-        ))}
+                <TabPanel key={image.name}>
+                  <div className='aspect-square relative overflow-hidden w-full'>
+                    <Image
+                      priority
+                      fill
+                      src={image.url}
+                      alt={image.url}
+                      className='object-cover object-center rounded-xl'
+                    />
+                  </div>
+                </TabPanel>
+              ))}
             </TabPanels>
         </TabGroup>
     )

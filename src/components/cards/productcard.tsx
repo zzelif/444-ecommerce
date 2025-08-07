@@ -29,9 +29,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const productUrl = `/products/${slugify(product.name)}?productId=${product.id}`
 
   return (
-    <div className='group/card h-full space-y-4 rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-2xl'>
+    <div className='group/card h-full space-y-4 rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-2xl dark:hover:shadow-xl'>
       <Link href={productUrl}>
-        <div className='relative aspect-square m-3 overflow-hidden rounded-2xl bg-gray-100'>
+        <div className='relative aspect-square m-3 overflow-hidden rounded-2xl bg-muted'>
           <Image
             src={product.imageUrl}
             alt={product.imageUrl}
@@ -43,9 +43,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <div className='space-y-3 px-4 pb-6'>
           <div className='space-y-1'>
-            <p className='text-sm capitalize text-gray-500'>{product.type}</p>
+            <p className='text-sm capitalize text-muted-foreground'>{product.type}</p>
             <p
-              className='truncate text-lg font-semibold group-hover/card:text-emerald-800'
+              className='truncate text-lg font-semibold group-hover/card:text-primary'
               title={product.name}
             >
               {titleCase(product.name)}
@@ -54,12 +54,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           <div className='flex items-center justify-between'>
-            <div className='font-semibold text-emerald-700'>
+            <div className='font-semibold text-primary'>
               {formatPrice(product.price)}
             </div>
 
-            <div className='group/icon'>
-              {/* <Button
+            {/* <div className='group/icon'>
+              <Button
                 aria-label='Add to cart'
                 className='bg-emerald-50 group-hover/icon:bg-emerald-500'
                 // onClick={onAddToCart}
@@ -68,9 +68,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     size={20}
                     className='text-emerald-600 group-hover/icon:text-white'
                   />
-              </Button> */}
+              </Button>
               
-            </div>
+            </div> */}
           </div>
         </div>
       </Link>

@@ -54,7 +54,7 @@ const Filter: React.FC<FilterProps> = ({ categories, className, ...props }) => {
                         <FilterIcon/>
                         Filters
                         {selectedCategory && (
-                            <span className="ml-1 rounded-full bg-chart-2 px-2 py-0.5 text-xs text-primary-foreground">
+                            <span className="ml-1 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
                                 1
                             </span>
                         )}

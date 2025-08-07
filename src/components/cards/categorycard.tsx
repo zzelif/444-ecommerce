@@ -7,8 +7,9 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import Image from "next/image";
 import Link from "next/link";
+import { Magnet, Flame, type LucideIcon } from "lucide-react"
+import React from "react";
 
 interface CategoryCardProps {
   category: {
@@ -17,27 +18,33 @@ interface CategoryCardProps {
   };
 }
 
+const getIconBySlug = (slug: ProductType) => {
+  const iconMap: Record<ProductType, LucideIcon> = {
+    candle: Flame,
+    magnet: Magnet,
+  };
+  
+  return iconMap[slug] || Flame;
+};
+
 const CategoryCard = async ({ category }: CategoryCardProps) => {
   const products = await prisma.product.count({
     where: { type: category.slug }
   });
 
+  const IconComponent = getIconBySlug(category.slug);
+
   return (
     <Link href={`/products?category=${category.slug}`}>
-      <Card className="group relative h-full w-full overflow-hidden rounded-lg bg-transparent transition-colors hover:bg-emerald-600">
+      <Card className="group relative h-full w-full overflow-hidden rounded-lg bg-transparent transition-colors hover:bg-primary">
         <CardHeader>
-          <Image
-            src={`/svg/${category.slug}.svg`}
-            alt={category.name}
-            width={32}
-            height={32}
-          />
+          <IconComponent className="h-8 w-8" />
         </CardHeader>
         <CardContent className="space-y-1.5">
-          <CardTitle className="text-2xl text-emerald-600 capitalize group-hover:text-white">
+          <CardTitle className="text-2xl text-primary capitalize group-hover:text-primary-foreground">
             {category.name}
           </CardTitle>
-          <CardDescription className="group-hover:text-white">
+          <CardDescription className="group-hover:text-primary-foreground">
             {products} Products
           </CardDescription>
         </CardContent>

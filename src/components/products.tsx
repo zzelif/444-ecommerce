@@ -13,7 +13,7 @@ const Product = () => {
       className="space-y-8 px-4 sm:px-6 lg:px-8 py-8 md:pt-10 lg:pt-24">
         <div className='flex items-end justify-between'>
         <div className='flex flex-col space-y-4'>
-          <h2 className='text-3xl md:text-5xl text-start text-emerald-600 font-bold leading-[1.1]'>
+          <h2 className='text-3xl md:text-5xl text-start text-primary font-bold leading-[1.1]'>
             Popular Products
           </h2>
           <h3 className='leading-normal text-muted-foreground sm:text-lg sm:leading-7'>
@@ -22,7 +22,7 @@ const Product = () => {
         </div>
         <Link
           href='/products'
-          className='hidden md:flex gap-1 text-emerald-700 hover:translate-x-1 hover:text-emerald-600 transition-all'
+          className='hidden md:flex gap-1 text-primary hover:translate-x-1 hover:text-primary transition-all'
         >
           Shop the collection <ArrowRight />
         </Link>
@@ -34,7 +34,7 @@ const Product = () => {
         href='/products'
         className={cn(
           buttonVariants(),
-          'mx-auto bg-emerald-700 flex w-fit hover:before:-translate-x-48',
+          'mx-auto bg-primary flex w-fit hover:before:-translate-x-48',
         )}
       >
         View all products
