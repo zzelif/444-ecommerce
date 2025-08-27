@@ -3,6 +3,7 @@ import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   // Your existing config...
   experimental: {
     // existing experimental features
