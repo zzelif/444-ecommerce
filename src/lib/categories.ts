@@ -2,7 +2,8 @@
 
 export const categories = [
   { slug: "candle", name: "Candle Souvenirs" },
-  { slug: "magnet", name: "Magnet Souvenirs" }
+  { slug: "magnet", name: "Magnet Souvenirs" },
+  { slug: "rosary", name: "Mini Rosary Souvenirs" }
 ] as const;
 
 

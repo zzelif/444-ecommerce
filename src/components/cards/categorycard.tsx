@@ -8,7 +8,7 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import Link from "next/link";
-import { Magnet, Flame, type LucideIcon } from "lucide-react"
+import { Magnet, Flame, MessageCircleDashed, type LucideIcon } from "lucide-react"
 import React from "react";
 
 interface CategoryCardProps {
@@ -22,6 +22,7 @@ const getIconBySlug = (slug: ProductType) => {
   const iconMap: Record<ProductType, LucideIcon> = {
     candle: Flame,
     magnet: Magnet,
+    rosary: MessageCircleDashed,
   };
   
   return iconMap[slug] || Flame;

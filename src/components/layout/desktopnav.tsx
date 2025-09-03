@@ -64,6 +64,9 @@ const DesktopNav = () => {
                 <ListItem href="/products?category=magnet" title="Magnets">
                   Explore the Ref Magnets category
                 </ListItem>
+                <ListItem href="/products?category=rosary" title="Mini Rosaries">
+                  Explore the Rosaries category
+                </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

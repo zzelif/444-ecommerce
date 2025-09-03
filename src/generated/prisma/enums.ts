@@ -9,7 +9,8 @@
 */
 export const ProductType = {
   candle: 'candle',
-  magnet: 'magnet'
+  magnet: 'magnet',
+  rosary: 'rosary'
 } as const
 
 export type ProductType = (typeof ProductType)[keyof typeof ProductType]
